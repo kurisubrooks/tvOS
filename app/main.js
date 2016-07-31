@@ -14,6 +14,7 @@ $(window).on("load", function() {
     console.log("loaded")
 
     setTimeout(function() {
+        $("body").css("overflow-y", "scroll")
         $(".loading-container").fadeOut("fast", function() {
             $(".loading-container").remove()
         })
