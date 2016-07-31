@@ -1,7 +1,7 @@
 .loading-container {
     position: relative;
-    z-index: 100;
-    height: 100%;
+    z-index: 1000;
+    height: 100vh;
 }
 
 .loading-container .loading-flex {
@@ -10,7 +10,7 @@
 }
 
 .loading-container .loading-flex.top {
-    height: 88% !important;
+    height: 88%;
 }
 
 .loading-container .loading-flex.top .loading-bar {
@@ -18,7 +18,7 @@
 }
 
 .loading-container .loading-flex.btm {
-    height: 12% !important;
+    height: 12%;
 }
 
 .loading-container .loading-flex.btm .loading-bar {
