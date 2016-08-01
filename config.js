@@ -3,6 +3,7 @@ module.exports = {
         port: 8373
     },
     display: {
-        overscan: "10px"
+        dark_mode: true,
+        overscan: 0
     }
 }
