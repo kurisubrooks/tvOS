@@ -9,6 +9,8 @@
 body {
     margin: 0;
     overflow-y: hidden;
+    background: black;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 
 .container {
@@ -21,14 +23,26 @@ body {
 
 }
 
+body.dark .container .screen .widget_bar {
+    background: rgb(30, 30, 30) !important;
+}
+
 .container .screen .widget_bar {
     height: 600px;
     background: rgb(225, 225, 225);
 }
 
+body.dark .container .screen .main_bar {
+    background: rgb(40, 40, 40) !important;
+}
+
 .container .screen .main_bar {
     background: rgb(240, 240, 240);
     padding: 50px 0;
+}
+
+body.dark .container .screen .apps_bar {
+    background: rgb(35, 35, 35) !important;
 }
 
 .container .screen .apps_bar {
@@ -56,17 +70,46 @@ body {
     height: 125px;
     width: 210px;
     flex-grow: 0;
-    border-radius: 4px;
-    background: rgb(200, 200, 200);
+    cursor: pointer;
+    border-radius: 8px;
     /*background: url("../icon.png");*/
     background-size: 210px 125px;
     background-repeat: no-repeat;
-    box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
 }
 
-.container .screen .grid .item.active {
-    transform: scale(1.2);
-    background: url("../icon.png");
-    background-size: 210px 125px;
-    box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.35);
+.container .screen .grid .item img {
+    border-radius: 4px;
+    max-height: 125px;
+    max-width: 210px;
+}
+
+.container .screen .grid .item .title {
+    display: none;
+    position: relative;
+    top: 6px;
+    color: #FFF;
+    font-size: 16px;
+    text-align: center;
+}
+
+.container .screen .grid .item.active:not(.invisible),
+.container .screen .grid .item:hover:not(.invisible) {
+    transform: translateY(-11px) scale(1.2);
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.4);
+    /*background: url("../icon.png") no-repeat;
+    background-size: 210px 125px;*/
+}
+
+.container .screen .grid .item.active:not(.invisible) .title,
+.container .screen .grid .item:hover:not(.invisible) .title {
+    display: block;
+}
+
+.container .screen .grid .item.invisible {
+    cursor: default;
+    background: transparent;
+    box-shadow: none;
 }
