@@ -1,5 +1,7 @@
 const { app, BrowserWindow } = require("electron")
+const config = require("./config.js")
 const os = require("os")
+const io = require("socket.io")(config.app.port)
 
 let window = null
 
