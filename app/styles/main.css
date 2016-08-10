@@ -13,84 +13,168 @@ body {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 
-.container {
+body > .container {
     position: relative;
     background: rgb(244, 244, 244);
     z-index: 0;
 }
 
+body.dark .container .screen {
+    background: rgb(35, 35, 35);
+}
+
 .container .screen {
-
+    background: rgb(230, 230, 230);
+    min-height: 100vh;
 }
 
-body.dark .container .screen .widget_bar {
-    background: rgb(30, 30, 30) !important;
-}
-
-.container .screen .widget_bar {
-    height: 600px;
-    background: rgb(225, 225, 225);
-}
-
-body.dark .container .screen .main_bar {
+body.dark .container .screen .hat {
     background: rgb(40, 40, 40) !important;
 }
 
-.container .screen .main_bar {
-    background: rgb(240, 240, 240);
-    padding: 50px 0;
+.clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
 }
 
-body.dark .container .screen .apps_bar {
+.container .screen .hat {
+    width: 100%;
+    background: rgb(240, 240, 240);
+    padding: 20px 24px;
+}
+
+body.dark .hat .clock {
+    color: #FFF;
+}
+
+.hat .clock {
+    float: right;
+    font-size: 32px;
+}
+
+body.dark .container .screen .apps {
     background: rgb(35, 35, 35) !important;
 }
 
-.container .screen .apps_bar {
+.container .screen .apps {
     background: rgb(230, 230, 230);
-    padding: 50px 0 35px;
+    padding-top: 20px;
 }
 
-.container .screen .main_bar .grid,
-.container .screen .apps_bar .grid {
-    max-width: 1350px;
-    margin: 0 auto;
-}
-
-.container .screen .apps_bar .grid:not(:last-of-type) {
-    margin-bottom: 50px;
-}
-
-.container .screen .grid {
+.grid {
     display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 0 0;
+}
+
+.grid .cell {
+    display: flex;
+    width: 20%;
+    margin-bottom: 45px;
     justify-content: space-around;
     align-items: center;
 }
 
-.container .screen .grid .item {
+.grid .cell .item:not(.invisible) {
     height: 125px;
     width: 210px;
-    flex-grow: 0;
     cursor: pointer;
-    border-radius: 8px;
-    /*background: url("../icon.png");*/
-    background-size: 210px 125px;
-    background-repeat: no-repeat;
+    border-radius: 6px;
     box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease,
-                box-shadow 0.2s ease;
+    transition: transform 0.15s ease,
+                box-shadow 0.15s ease;
 }
 
-.container .screen .grid .item img {
-    border-radius: 4px;
-    max-height: 125px;
-    max-width: 210px;
+.grid .cell .item img {
+    border-radius: 6px;
+}
+
+body.dark .grid .cell .item .title {
+    color: #FFF;
+}
+
+.grid .cell .item .title {
+    display: none;
+    position: relative;
+    text-align: center;
+    color: #333;
+    top: 7px;
+}
+
+.grid .cell .item.active:not(.invisible),
+.grid .cell .item:hover:not(.invisible) {
+    transform: translateY(-11px) scale(1.15);
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.grid .cell .item:hover .title {
+    display: block;
+}
+
+.alert-overlay {
+    background: rgba(240, 240, 240, 0.9);
+    text-align: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+}
+
+.alert-overlay .alert {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+}
+
+.alert-overlay .alert .title {
+    font-weight: 500;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.alert-overlay .alert .message {
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.alert-overlay .alert .button {
+    display: inline-block;
+    cursor: pointer;
+    padding: 12px 28px;
+    font-size: 22px;
+    text-transform: uppercase;
+    background: #FFF;
+    border-radius: 3px;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.1s;
+}
+
+.alert-overlay .alert .button:hover {
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+/*
+
+body.dark .container .screen .grid .item .title {
+    color: #FFF;
 }
 
 .container .screen .grid .item .title {
     display: none;
     position: relative;
-    top: 6px;
-    color: #FFF;
+    top: 1px;
+    color: #333;
     font-size: 16px;
     text-align: center;
 }
@@ -98,18 +182,16 @@ body.dark .container .screen .apps_bar {
 .container .screen .grid .item.active:not(.invisible),
 .container .screen .grid .item:hover:not(.invisible) {
     transform: translateY(-11px) scale(1.2);
-    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.4);
-    /*background: url("../icon.png") no-repeat;
-    background-size: 210px 125px;*/
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
 }
 
 .container .screen .grid .item.active:not(.invisible) .title,
 .container .screen .grid .item:hover:not(.invisible) .title {
-    display: block;
+    //display: block;
 }
 
 .container .screen .grid .item.invisible {
     cursor: default;
     background: transparent;
     box-shadow: none;
-}
+}*/
