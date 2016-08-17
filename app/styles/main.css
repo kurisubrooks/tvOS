@@ -181,6 +181,7 @@ body.dark .alert-overlay .alert .button {
 }
 
 .application {
+    background: #FFFFFF;
     position: absolute;
     height: 100%;
     width: 100%;

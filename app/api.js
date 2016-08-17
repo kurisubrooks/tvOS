@@ -3,9 +3,11 @@ let guid = function() {
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4())
 }
 
+// OS API
 window.UI = {
     self: this,
 
+    // Alerts
     Alert: function(object) {
         let id =        guid()
         let body =      $("body")
@@ -23,6 +25,7 @@ window.UI = {
         button.text(object.action ? object.action : "Dismiss")
         rest.css("-webkit-filter", "blur(20px)")
 
+        // Close Alert on Click
         button.click(function(e) {
             // Prevent Double Trigger
             e.stopImmediatePropagation()
@@ -40,6 +43,7 @@ window.UI = {
             }
         })
 
+        // Add to Screen
         container.append(title)
         container.append(message)
         container.append(button)
@@ -52,22 +56,25 @@ window.UI = {
         storage.alerts++
     },
 
-    Window: function(object) {
-        console.log("Starting app:" + object.app)
+    // Application API
+    Window: (object) => {
         let id =        guid()
         let body =      $("body")
         let rest =      $("body > .container")
         let application =   $(`<div class="application" id="${id}" style="display:none"></div>`)
         let browser =           $(`<webview></webview>`)
-
         let url = object.type === "browser" ? object.url : path.join(__dirname, apps, object.app, main.html)
 
         // Build Element
         browser.attr("src", url)
 
+        // Open Window
         application.append(browser)
         body.append(application)
-        application.fadeIn(500)
+        application.fadeIn("fast")
+
+        // Log for Debug
+        console.log("Starting \`" + object.app + '`')
 
         // Add to Storage
         storage.windows++
