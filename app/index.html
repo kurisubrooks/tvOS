@@ -8,13 +8,15 @@
     <link href="./styles/main.css" rel="stylesheet">
     <script src="./main.js"></script>
     <script src="./api.js"></script>
+    <script src="./apps.js"></script>
 
     <script>
     setTimeout(function() {
-        UI.Alert({
-            title: "Earthquake Warning",
-            message: "Strong Earthquake occurred Offshore Ibaraki Prefecture. Please be cautious of strong shaking."
-        })
+        /*UI.Alert({
+            title: "緊急地震速報",
+            message: "大地震が茨城沖が発生しました。<br>強い揺れに警戒してください。",
+            action: "解除する"
+        })*/
     }, 2000)
     </script>
 </head>
@@ -51,13 +53,7 @@
             </div>
 
             <div class="apps">
-                <div class="grid">
-                    <div class="cell">
-                        <div class="item" data-pos="0,1">
-                            <img src="icons/chrome.png" height="125px" width="210px">
-                            <div class="title">Chrome</div>
-                        </div>
-                    </div>
+                <div class="grid" id="grid">
                     <!--<div class="cell">
                         <div class="item" data-pos="0,1">
                             <img src="icons/chrome.png" height="125px" width="210px">
@@ -143,8 +139,8 @@
                         <div class="item invisible" data-pos="2,5">
 
                         </div>
-                    </div>
-                </div>-->
+                    </div>-->
+                </div>
             </div>
         </div>
     </div>
