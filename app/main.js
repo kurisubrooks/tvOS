@@ -5,8 +5,7 @@ const moment = require("moment")
 const config = require("../config.js")
 const storage = {
     pos: {
-              // [y, x]
-        current: [0, 3]
+        current: [0, 1]
     },
     alerts: 0,
     windows: 0
@@ -50,7 +49,10 @@ $(document).ready(function() {
             e.preventDefault()
         } else if (key === 192) {
             if (storage.windows > 0) {
-                $("webview").fadeOut(500, $(".application")[0].remove())
+                $(".application").fadeOut(200, () => {
+                    $(".application")[0].remove()
+                    console.log("App closed")
+                })
             }
         }
     })
