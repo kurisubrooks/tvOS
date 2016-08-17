@@ -9,11 +9,8 @@ let start = function() {
     let options = {
         width: 1280,
         height: 720,
+        autoHideMenuBar: true,
         title: ""
-    }
-
-    if (os.platform === "linux" || os.platform === "win32") {
-        options.fullscreen = true
     }
 
     window = new BrowserWindow(options)
