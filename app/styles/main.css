@@ -135,8 +135,7 @@ body.dark .alert-overlay {
     top: 0;
     left: 0;
     transition: filter 1s,
-                -webkit-filter 1s,
-                -webkit* 1s;
+                -webkit-filter 1s;
 }
 
 .alert-overlay .alert {
